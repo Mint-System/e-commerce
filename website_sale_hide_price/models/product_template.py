@@ -47,7 +47,7 @@ class ProductTemplate(models.Model):
         website_show_price = (
             self.env["website"].get_current_website().website_show_price
         )
-        for product, data in zip(self, results_data):
+        for product, data in zip(self, results_data, strict=True):
             if product.website_hide_price or not website_show_price:
                 data.update(
                     {
